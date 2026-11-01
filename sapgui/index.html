@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAP Easy Access - Jan Hrusovsky | Cloud Architect and Advisor</title>
+<meta name="description" content="Jan Hrusovsky - Cloud Architect and Advisor (RISE with SAP, SAP Basis). Interactive CV styled like a classic SAP GUI.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ===== Logon screen ===== -->
+<div id="logon" class="logon">
+  <div class="win logon-win" role="dialog" aria-label="Logon">
+    <div class="titlebar"><span class="tb-icon"></span><span>Logon to system JH1</span><span class="tb-btns"><i>_</i><i>&#9633;</i><i>&times;</i></span></div>
+    <div class="logon-body">
+      <div class="logon-form">
+        <div class="logon-head">JH1 &middot; Career System</div>
+        <label>Client<input id="lg-client" value="100" maxlength="3" inputmode="numeric" autocomplete="off"></label>
+        <label>User<input id="lg-user" value="HRUSOVSKY_J" autocomplete="off" autocapitalize="characters"></label>
+        <label>Password<input id="lg-pass" type="password" placeholder="(any or none)" autocomplete="off"></label>
+        <label>Language<input id="lg-lang" value="EN" maxlength="2" autocomplete="off"></label>
+        <button id="lg-btn" class="btn primary">&#10003; Log On</button>
+      </div>
+      <div class="logon-info">
+        <h2>Jan Hrusovsky</h2>
+        <p class="role">Cloud Architect and Advisor</p>
+        <blockquote id="lg-quote"></blockquote>
+        <p class="hint">Press <kbd>Enter</kbd> to log on. Any password works.<br>Tip: type <b>/nZPROJ</b> into the command field later.</p>
+      </div>
+    </div>
+    <div class="statusbar"><span class="st-msg">&nbsp;</span><span class="st-sys">JH1 (1) 100</span></div>
+  </div>
+</div>
+
+<!-- ===== Main GUI ===== -->
+<div id="gui" class="gui" hidden>
+  <div class="titlebar main-title"><span class="tb-icon"></span><span id="win-title">SAP Easy Access</span><span class="tb-btns"><i>_</i><i>&#9633;</i><i id="tb-close" title="Log off">&times;</i></span></div>
+
+  <nav class="menubar" id="menubar">
+    <div class="menu" data-menu="menu"><button>Menu</button><ul>
+      <li data-cmd="SESSION_MANAGER">SAP Easy Access</li><li data-cmd="ZPROJ">Projects</li><li data-cmd="ZEXP">Work experience</li><li data-cmd="ZSKILL">Skills</li><li data-cmd="ZCERT">Certifications &amp; trainings</li><li data-cmd="ZEDU">Education</li><li data-cmd="ZLANG">Languages</li><li data-cmd="ZCONT">Contact</li><li class="sep"></li><li data-cmd="/nex">Exit</li></ul></div>
+    <div class="menu" data-menu="edit"><button>Edit</button><ul>
+      <li data-act="selectall">Select all rows</li><li data-act="deselect">Deselect all</li><li data-act="copy">Copy current screen URL</li><li class="sep"></li><li data-act="cancel">Cancel (F12)</li></ul></div>
+    <div class="menu" data-menu="fav"><button>Favorites</button><ul id="fav-list">
+      <li data-act="addfav">Add current screen</li><li data-act="clearfav">Delete all favorites</li><li class="sep"></li></ul></div>
+    <div class="menu" data-menu="extras"><button>Extras</button><ul>
+      <li data-act="tcodes">Display transaction codes (F4)</li><li data-act="toggletc">Show technical names</li><li data-act="settings">Settings&hellip;</li></ul></div>
+    <div class="menu" data-menu="system"><button>System</button><ul>
+      <li data-cmd="/o">Create session</li><li data-cmd="SM04">User list (SM04)</li><li data-act="status">Status&hellip;</li><li data-cmd="/n">Back to Easy Access</li><li class="sep"></li><li data-cmd="/nex">Log off</li></ul></div>
+    <div class="menu" data-menu="help"><button>Help</button><ul>
+      <li data-act="f1">Application help (F1)</li><li data-act="tcodes">Transaction list (F4)</li><li data-act="about">About this CV&hellip;</li><li data-act="pdf">Download CV (PDF)</li></ul></div>
+  </nav>
+
+  <div class="toolbar">
+    <button class="tbtn" id="btn-tree" title="Easy Access menu" aria-label="Toggle menu tree">&#9776;</button>
+    <button class="tbtn ok" id="btn-ok" title="Enter" aria-label="Execute">&#10004;</button>
+    <div class="cmd-wrap"><input id="okcode" class="okcode" placeholder="Command (e.g. ZPROJ)" autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="go" aria-label="Command field"><button class="f4" id="btn-f4" title="Possible entries (F4)" aria-label="Transaction list">&#9662;</button></div>
+    <span class="tsep"></span>
+    <button class="tbtn" id="btn-save" title="Save (Ctrl+S) - download PDF CV" aria-label="Save">&#128190;</button>
+    <button class="tbtn back" id="btn-back" title="Back (F3)" aria-label="Back">&#9664;</button>
+    <button class="tbtn exit" id="btn-exit" title="Exit (Shift+F3)" aria-label="Exit">&#9650;</button>
+    <button class="tbtn cancel" id="btn-cancel" title="Cancel (F12)" aria-label="Cancel">&#10006;</button>
+    <span class="tsep hide-m"></span>
+    <button class="tbtn hide-m" id="btn-help" title="Help (F1)" aria-label="Help">?</button>
+  </div>
+
+  <div class="screen-title"><h1 id="scr-title">SAP Easy Access</h1></div>
+  <div class="apptoolbar" id="apptoolbar"></div>
+
+  <div class="workarea">
+    <aside class="tree" id="tree" aria-label="SAP Easy Access menu">
+      <div class="tree-head">Menu tree <button class="tree-close" id="tree-close" aria-label="Close">&times;</button></div>
+      <ul class="treeview" id="treeview"></ul>
+    </aside>
+    <div class="drawer-mask" id="mask"></div>
+    <main class="content" id="content" tabindex="-1"></main>
+  </div>
+
+  <footer class="statusbar main-status">
+    <span class="st-msg" id="st-msg"><span class="st-ico"></span><span id="st-text">&nbsp;</span></span>
+    <span class="st-sys"><span id="st-tc">SESSION_MANAGER</span><span>JH1 (1) 100</span><span class="hide-m">sapbasis</span><span class="hide-m">INS</span></span>
+  </footer>
+</div>
+
+<!-- popup -->
+<div id="popup-mask" class="popup-mask" hidden>
+  <div class="win popup" role="dialog" aria-modal="true">
+    <div class="titlebar"><span class="tb-icon"></span><span id="pp-title">Info</span><span class="tb-btns"><i id="pp-x">&times;</i></span></div>
+    <div class="pp-body" id="pp-body"></div>
+    <div class="pp-foot" id="pp-foot"><button class="btn primary" id="pp-ok">&#10004; Continue</button></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

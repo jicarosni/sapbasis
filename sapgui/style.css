@@ -189,6 +189,159 @@ table.alv td.nw{white-space:nowrap}
 .treeview .tcode{display:none}
 .tech .treeview .tcode{display:inline}
 
+
+/* =====================================================================
+   CLASSIC SKIN - SAP GUI 6.x/7.x "Classic" look (own CSS, no SAP assets)
+   ===================================================================== */
+:root{
+  --bg:#d8dae8; --panel:#e4e5ef; --panel2:#eef0f6; --line:#9a9cb0; --line2:#c0c2d2;
+  --blue:#0b2f6e; --blue2:#1f4f9a; --blue3:#5a7fbf; --sel:#b8cdee; --sel2:#7f9fd6;
+  --text:#000; --muted:#4f5468;
+  --font: Tahoma, Verdana, "DejaVu Sans", Arial, Helvetica, sans-serif;
+  --mono: "Courier New", Consolas, monospace;
+  --hi:#ffffff; --sh:#808090; --face:#e6e5ee;
+}
+html,body{font:12px/1.3 var(--font);background:#b9bdd3}
+kbd{border-radius:0;font-size:10px}
+
+/* bevel helpers */
+.btn,.abtn,.tab,.tbtn:hover,.f4,.tb-btns i{border-style:solid;border-width:1px;border-color:var(--hi) var(--sh) var(--sh) var(--hi);border-radius:0}
+
+/* window title (Win classic) */
+.win{border:2px solid;border-color:#f0f0f5 #40405a #40405a #f0f0f5;box-shadow:1px 1px 0 #000,4px 6px 18px rgba(0,0,0,.3)}
+.titlebar{height:20px;font-size:11px;font-weight:700;background:linear-gradient(90deg,#0a246a,#3a6ea5 70%,#a6caf0);padding:0 3px 0 4px}
+.tb-icon{width:14px;height:14px;border-radius:0}
+.tb-btns i{width:16px;height:14px;font-size:10px;line-height:1;color:#000;background:var(--face);font-weight:700}
+.tb-btns i:last-child:hover{background:#d6d6e0;color:#000}
+
+/* menu bar: blue gradient band with logo */
+.menubar{height:22px;align-items:center;background:linear-gradient(#5d84c4,#2c579f 55%,#1e4689);border-bottom:1px solid #12306a}
+.menu>button{height:22px;padding:0 8px;color:#fff;font-size:11px}
+.menu>button:hover,.menu.open>button{background:rgba(255,255,255,.22);color:#fff}
+.menu ul{top:22px;min-width:220px;padding:2px;background:var(--face);border:1px solid;border-color:var(--hi) #404050 #404050 var(--hi);box-shadow:2px 2px 0 rgba(0,0,0,.35)}
+.menu li{padding:3px 20px;font-size:11px;color:#000}
+.menu li:hover{background:#0a246a;color:#fff}
+.menu li:hover .tc{color:#dfe6ff}
+.menu li.sep{border-top:1px solid var(--sh);border-bottom:1px solid var(--hi)}
+.sap-logo{margin-left:auto;margin-right:6px;flex:none;height:17px;padding:0 13px 0 6px;display:grid;place-items:center;
+  font:italic 900 12px/1 Arial,Helvetica,sans-serif;letter-spacing:.5px;color:#fff;
+  background:linear-gradient(#4f8fe0,#0d55b8);clip-path:polygon(0 0,100% 0,78% 100%,0 100%);text-shadow:0 1px 0 #083a80}
+
+/* standard toolbar */
+.toolbar{height:28px;gap:1px;padding:0 4px;background:linear-gradient(#f0f1f7,#d9dbe8);border-top:1px solid var(--hi);border-bottom:1px solid var(--line)}
+.tbtn{width:22px;height:22px;font-size:12px;border-radius:0}
+.tbtn:hover{background:var(--face)}
+.tbtn.ok{color:#14a014;font-size:14px}
+.tbtn.back{color:#1a8a1a}.tbtn.exit{color:#d39b00}.tbtn.cancel{color:#d02020}
+#btn-help{color:var(--blue2);font-weight:700}
+.cmd-wrap{height:19px;width:170px;border-radius:0;border:1px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);box-shadow:inset 1px 1px 0 #404050}
+.okcode{height:17px;font:11px var(--mono);padding:0 4px}
+.okcode::placeholder{font-size:11px}
+.okcode:focus{outline:none}
+.cmd-wrap:focus-within{background:#fffbe0}
+.f4{height:17px;width:16px;font-size:8px;background:var(--face)}
+.tsep{height:18px;background:var(--sh);box-shadow:1px 0 0 var(--hi);margin:0 4px}
+
+/* screen title: blue italic bold */
+.screen-title{padding:3px 8px;background:linear-gradient(#f3f4fa,#cfd4e8);border-bottom:1px solid var(--line2)}
+.screen-title h1{font-size:14px;font-weight:700;font-style:italic;color:#14367a;letter-spacing:.1px}
+
+/* application toolbar */
+.apptoolbar{min-height:26px;gap:3px;padding:2px 6px;background:var(--panel);border-bottom:1px solid var(--line)}
+.abtn{height:20px;padding:0 7px;font-size:11px;background:var(--face)}
+.abtn:hover{background:#f2f2f8}
+.abtn:active,.btn:active,.tab:active{border-color:var(--sh) var(--hi) var(--hi) var(--sh)}
+
+/* buttons */
+.btn{height:22px;padding:0 10px;font-size:11px;background:var(--face);box-shadow:1px 1px 0 #404050}
+.btn:hover{background:#f2f2f8}
+.btn.primary{background:var(--face);font-weight:700;border-color:var(--hi) var(--sh) var(--sh) var(--hi);outline:1px solid #000;outline-offset:-3px}
+
+/* tree pane */
+.tree{width:270px;background:#f6f7fb;border-right:2px solid;border-right-color:var(--line)}
+.tree-head{padding:2px 6px;font-size:11px;font-weight:700;color:#000;background:linear-gradient(#eceef5,#d3d6e4);border-bottom:1px solid var(--line)}
+.treeview{padding:2px 0}
+.treeview ul{padding-left:14px}
+.treeview li>div{gap:4px;padding:1px 4px;font-size:11px}
+.treeview li>div:hover{background:#e3e8f6}
+.treeview li>div.active{background:#ffd877;outline:1px dotted #000}
+.ic.folder{width:15px;height:12px;background:linear-gradient(#fff2b0,#f3cf4f 60%,#d9a924);border:1px solid #a17b10}
+.ic.tx{width:11px!important;height:11px!important;border-radius:50%!important;border:1px solid #1b6a1b;background:radial-gradient(circle at 35% 35%,#a6f0a6,#22a022 70%)}
+.ic.tx:after{display:none}
+.treeview .tcode{font-size:10px}
+.treeview .tw{font-size:8px;color:#303040}
+
+/* work area & home */
+.content{padding:8px}
+.home{border:1px solid var(--line);border-radius:0;background:linear-gradient(160deg,#eef0f8,#cdd2e6)}
+.home:before{background:repeating-radial-gradient(circle,rgba(11,47,110,.05) 0 14px,transparent 14px 28px)}
+.home-card h2{font-style:italic;color:#14367a;font-size:30px}
+.home-card .role{color:var(--blue2);font-size:15px}
+.tile{border-radius:0;background:var(--face);border:1px solid;border-color:var(--hi) var(--sh) var(--sh) var(--hi);padding:8px 4px}
+.tile:hover{background:#f4f4fa;border-color:var(--hi) var(--sh) var(--sh) var(--hi)}
+.tile b{font-size:11px;color:var(--blue2)}
+.tile span{font-size:11px}
+
+/* dynpro groups / fields */
+.group{border:1px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);box-shadow:inset 1px 1px 0 var(--hi),1px 1px 0 var(--sh);border-radius:0;background:var(--panel2);margin-bottom:10px}
+.group>.gh{padding:2px 6px;font-size:11px;font-weight:700;color:var(--blue);background:none;border-bottom:1px solid var(--line2)}
+.group .gb{padding:8px}
+.frow{grid-template-columns:150px 1fr;gap:6px;margin-bottom:4px}
+.frow>label{font-size:11px;padding-top:2px;color:#000}
+.frow .val{min-height:19px;font-size:11px;padding:2px 5px;border-radius:0;border:1px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);background:#fff}
+.frow .val.ro{background:#e9eaf2}
+p.long{font-size:11.5px;border-radius:0;border-color:#a8aabd;padding:6px}
+ul.bul{font-size:11.5px}
+
+/* tabs (3D) */
+.tabs{gap:0;padding-left:2px}
+.tab{padding:3px 10px;font-size:11px;background:var(--face);border-bottom:0;margin-right:-1px;border-radius:0;position:relative;top:2px}
+.tab.on{top:0;padding-bottom:5px;background:var(--panel2);color:#000;font-weight:700;z-index:1;border-color:var(--hi) var(--sh) transparent var(--hi)}
+.tabpane{border:1px solid;border-color:var(--hi) var(--sh) var(--sh) var(--hi);border-radius:0;padding:8px}
+
+/* ALV / grid */
+.alv-title{padding:2px 6px;font-size:11px;font-weight:700;color:var(--blue);background:linear-gradient(#eef0f7,#d8dbe9);border-color:var(--line)}
+.alv-wrap{border:1px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);box-shadow:inset 1px 1px 0 #50506a;background:#fff}
+table.alv{font-size:11px}
+table.alv th{padding:2px 6px;font-weight:400;color:#000;background:linear-gradient(#eef2fa,#cfd8ea);border:1px solid;border-color:var(--hi) #9599b0 #9599b0 var(--hi)}
+table.alv th:hover{background:#c3d0ea}
+table.alv td{padding:2px 6px;border:1px solid #c8cad6}
+table.alv tr:nth-child(even) td{background:#f3f5fb}
+table.alv td.sel{width:14px;background:var(--face)!important;border-color:var(--hi) var(--sh) var(--sh) var(--hi)}
+table.alv tbody tr:hover td{background:#e6ecf8}
+table.alv tr.on td{background:#b8cdee!important}
+table.alv tr.on td.sel{background:#6f8fcf!important}
+table.alv td.key{color:#0b2f6e}
+.light{width:10px;height:10px;border:1px solid rgba(0,0,0,.35)}
+.note{font-size:11px}
+
+/* popups */
+.popup-mask{background:rgba(40,40,70,.25)}
+.pp-body{background:var(--panel2);padding:10px}
+.pp-foot{background:var(--panel);border-top:1px solid var(--line);padding:6px 8px}
+.pp-help:before{border-radius:0;width:24px;height:24px;background:#1f4f9a;font-size:14px;box-shadow:1px 1px 0 #000}
+.f4list td{font-size:11px;padding:2px 6px;border-bottom:1px solid #d8d9e3}
+.f4list tr:hover td{background:#0a246a;color:#fff}
+.f4list tr:hover td:first-child{color:#fff}
+
+/* status bar: grey bevelled fields */
+.statusbar{height:22px;padding:2px 3px;font-size:11px;background:var(--face);border-top:1px solid var(--hi);box-shadow:0 -1px 0 var(--line)}
+.st-msg{height:18px;padding:0 4px;flex:1;border:1px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh)}
+.st-ico{width:12px;height:12px}
+.st-sys{gap:3px}
+.st-sys>span{border:1px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);padding:0 8px;height:18px;line-height:16px;color:#000}
+
+/* logon (classic: lavender with blue band) */
+.logon{background:linear-gradient(#5d84c4,#1e4689 64px,#c3c8de 64px,#b3b8d2)}
+.logon-form{background:var(--panel2);border-right:1px solid var(--line)}
+.logon-head{color:#14367a;font-style:italic;font-size:13px}
+.logon-form label{font-size:11px;grid-template-columns:72px 1fr}
+.logon-form input,.fld{height:20px;font-size:11px;border-radius:0;border:1px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);box-shadow:inset 1px 1px 0 #404050}
+.logon-form input:focus{outline:none;background:#fffbe0}
+.logon-info{background:linear-gradient(135deg,#eef0f8,#ccd2e7)}
+.logon-info h2{font-style:italic;color:#14367a}
+.logon-info blockquote{border-left-color:#5a7fbf;font-size:11.5px}
+
 /* ===== responsive ===== */
 @media (max-width: 900px){
   .tree{position:absolute;top:0;bottom:0;left:0;z-index:40;width:min(86vw,320px);transform:translateX(-102%);transition:transform .2s ease;box-shadow:4px 0 18px rgba(0,0,0,.3)}
@@ -226,4 +379,40 @@ table.alv td.nw{white-space:nowrap}
   table.alv td{white-space:nowrap}
   .alv-wrap{-webkit-overflow-scrolling:touch}
   .st-sys>span:first-child{display:none}
+}
+
+/* classic skin - phone tweaks (keep touch targets and readable sizes) */
+@media (max-width: 900px){
+  .tree{border-right:1px solid var(--line)}
+}
+@media (max-width: 600px){
+  html,body{font-size:13.5px}
+  .menu>button,.menu li{font-size:13px}
+  .menubar{height:28px} .menu>button{height:28px} .menu ul{top:52px}
+  .sap-logo{margin-right:4px;font-size:11px;height:15px}
+  .titlebar{height:24px;font-size:12px}
+  .tb-btns i{width:22px;height:18px;font-size:12px}
+  .toolbar{height:40px}
+  .tbtn{width:32px;height:32px;font-size:15px}
+  .cmd-wrap{height:30px}
+  .okcode{height:28px;font-size:16px}
+  .okcode::placeholder{font-size:13px}
+  .f4{height:28px;width:26px;font-size:10px}
+  .screen-title h1{font-size:15px}
+  .abtn{height:30px;font-size:12.5px;padding:0 9px}
+  .btn{height:34px;font-size:13px}
+  .treeview li>div{padding:7px 8px;font-size:13px}
+  .tree-head{font-size:13px;padding:6px 8px}
+  table.alv{font-size:12.5px}
+  table.alv th,table.alv td{padding:5px 7px}
+  .frow>label,.frow .val,.group>.gh,.tab,p.long,ul.bul,.alv-title,.f4list td,.note{font-size:13px}
+  .frow .val{min-height:26px;padding:4px 6px}
+  .tab{padding:6px 11px}
+  .tile b,.tile span{font-size:12.5px}
+  .logon{background:linear-gradient(#5d84c4,#1e4689 40px,#c3c8de 40px,#b3b8d2)}
+  .logon-form label{font-size:13px}
+  .logon-form input{height:34px;font-size:16px}
+  .logon-form .btn{height:38px}
+  .statusbar{height:26px;font-size:12px}
+  .st-msg,.st-sys>span{height:22px;line-height:20px}
 }

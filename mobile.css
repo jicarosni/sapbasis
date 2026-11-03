@@ -1,0 +1,305 @@
+/* Phone and tablet layout. Loaded only at max-width 1024px so the desktop rules in style.css stay as they are. */
+
+@media (max-width: 1024px) {
+	html {
+		min-width: 0;
+		max-width: none;
+		overflow-x: hidden;
+		-webkit-text-size-adjust: 100%;
+		background-color: #0e0e0e;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+		margin: 0;
+		overflow-x: hidden;
+		background: #0e0e0e linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.55)), url("back1.jpg") center top / cover no-repeat fixed;
+	}
+
+	body > div:nth-of-type(1) {
+		order: 1;
+		position: relative;
+		width: 100%;
+		box-sizing: border-box;
+		padding: calc(1.35rem + env(safe-area-inset-top)) 1rem 0.85rem;
+		text-align: center;
+		container-type: inline-size;
+		overflow: hidden;
+	}
+
+	body > div:nth-of-type(1) > span {
+		position: relative;
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		box-sizing: border-box;
+		/* 9vw is the fallback when container query units are unavailable. */
+		font-size: 9vw;
+		line-height: 1.02;
+		white-space: nowrap;
+		overflow: hidden;
+		opacity: 0.92;
+		color: #fff;
+		text-shadow: 0 2px 16px rgba(0, 0, 0, 0.75);
+		-webkit-mask-image: none;
+		animation: none;
+	}
+
+	body > div:nth-of-type(1) > span.basis {
+		margin-top: 0.4rem;
+		font-size: clamp(1.15rem, 4.2vw, 2.15rem);
+		font-weight: 300;
+		opacity: 1;
+		color: #fff;
+	}
+
+	@supports (font-size: 1cqw) {
+		body > div:nth-of-type(1) > span:not(.basis) {
+			/* Two lines (JAN / HRUSOVSKY) so the hairline name stays large without sideways scroll. */
+			font-size: 14.5cqw;
+			line-height: 0.95;
+			white-space: normal;
+		}
+
+		body > div:nth-of-type(1) > span.basis {
+			font-size: clamp(1.15rem, 4.5cqw, 2.15rem);
+		}
+	}
+
+	.bio { order: 2; }
+	.projects { order: 3; }
+	.resume { order: 4; }
+	.other { order: 5; }
+
+	body > div:nth-of-type(2) {
+		order: 6;
+		position: relative;
+		width: 100%;
+	}
+
+	.quote {
+		position: relative;
+		top: auto;
+		left: auto;
+		display: block;
+		width: auto;
+		margin: 0;
+		box-sizing: border-box;
+		padding: 1.2rem 1.15rem calc(1.6rem + env(safe-area-inset-bottom));
+		font-size: 1rem;
+		line-height: 1.5;
+		background: rgba(0, 0, 0, 0.4);
+		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+	}
+
+	.quote blockquote {
+		margin: 0;
+	}
+
+	.quote cite {
+		display: block;
+		margin-top: 0.45rem;
+	}
+
+	.bio,
+	.projects,
+	.resume,
+	.other {
+		position: relative;
+		top: auto;
+		left: auto;
+		float: none;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: auto;
+		min-height: 0;
+		margin: 0;
+		box-sizing: border-box;
+		font-size: 1rem;
+		perspective: none;
+		transform-style: flat;
+		border: 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+		border-image: none;
+		overflow: hidden;
+	}
+
+	.bio .frontBio,
+	.projects .frontProjects,
+	.resume .frontResume,
+	.other .frontOther,
+	.bio:hover .frontBio,
+	.projects:hover .frontProjects,
+	.resume:hover .frontResume,
+	.other:hover .frontOther {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		transform: none;
+		backface-visibility: visible;
+		background: rgba(0, 0, 0, 0.28);
+	}
+
+	.bio .frontBio h3,
+	.projects .frontProjects h3,
+	.resume .frontResume h3,
+	.other .frontOther h3 {
+		position: static;
+		width: auto;
+		height: auto;
+		margin: 0;
+		padding: 1.15rem 1.15rem 0.35rem;
+		font-size: clamp(1.7rem, 6vw, 2.75rem);
+		letter-spacing: 0.04em;
+	}
+
+	.bio .backBio,
+	.projects .backProjects,
+	.resume .backResume,
+	.other .backOther,
+	.bio:hover .backBio,
+	.projects:hover .backProjects,
+	.resume:hover .backResume,
+	.other:hover .backOther {
+		position: relative;
+		left: auto;
+		display: block;
+		flex: 1 0 auto;
+		width: 100%;
+		height: auto;
+		transform: none;
+		backface-visibility: visible;
+		opacity: 1;
+		border: 0;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.bio .backBio {
+		background-image: linear-gradient(rgba(8, 16, 32, 0.72), rgba(8, 16, 32, 0.78)), url("bio_back_blue.jpg");
+	}
+
+	.projects .backProjects {
+		background-image: linear-gradient(rgba(8, 16, 32, 0.72), rgba(8, 16, 32, 0.78)), url("projects_back3.jpg");
+	}
+
+	.resume .backResume {
+		background-image: linear-gradient(rgba(8, 16, 32, 0.72), rgba(8, 16, 32, 0.78)), url("resume_back2.jpg");
+	}
+
+	.other .backOther {
+		background-image: linear-gradient(rgba(8, 16, 32, 0.72), rgba(8, 16, 32, 0.78)), url("other_back2.jpg");
+	}
+
+	.bio .backBio .bio-text-back,
+	.projects .backProjects .projects-text-back,
+	.resume .backResume .resume-text-back,
+	.other .backOther .other-text-back,
+	.bio-text-back:hover,
+	.projects-text-back:hover,
+	.resume-text-back:hover,
+	.other-text-back:hover {
+		position: static;
+		left: auto;
+		top: auto;
+		width: auto;
+		margin: 0;
+		padding: 0.15rem 1.15rem 0.15rem;
+		font-size: 1.35rem;
+		line-height: 1.3;
+		text-align: left;
+		opacity: 1;
+		-webkit-mask-image: none;
+		animation: none;
+	}
+
+	.bio .backBio p,
+	.projects .backProjects p,
+	.resume .backResume p,
+	.other .backOther p,
+	.list_projects,
+	.list_resume,
+	.completed {
+		position: static;
+		top: auto;
+		left: auto;
+		width: auto;
+		margin: 0;
+		border: 0;
+		box-sizing: border-box;
+		padding: 0.35rem 1.15rem 1.1rem;
+		font-size: 1.0625rem;
+		line-height: 1.55;
+		text-align: left;
+		overflow-wrap: anywhere;
+	}
+
+	.list_projects li,
+	.list_resume li {
+		display: list-item;
+		list-style-position: inside;
+		margin: 0 0 0.75rem;
+		padding: 0;
+	}
+
+	.list_projects br,
+	.list_resume br {
+		display: none;
+	}
+
+	.resume .backResume .button {
+		position: relative;
+		left: auto;
+		bottom: auto;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 44px;
+		min-width: 44px;
+		margin: 0.15rem 1.15rem 1.25rem;
+		padding: 0.7rem 1.35rem;
+		font-size: 1.0625rem;
+		box-sizing: border-box;
+	}
+
+	.resume .backResume .button:focus-visible {
+		outline: 2px solid #fff;
+		outline-offset: 3px;
+	}
+}
+
+@media (min-width: 700px) and (max-width: 1024px) {
+	body {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: stretch;
+	}
+
+	body > div:nth-of-type(1),
+	body > div:nth-of-type(2) {
+		flex: 1 0 100%;
+	}
+
+	.bio,
+	.projects,
+	.resume,
+	.other {
+		flex: 1 1 50%;
+		width: 50%;
+		max-width: 50%;
+	}
+
+	.bio,
+	.resume {
+		border-right: 1px solid rgba(255, 255, 255, 0.28);
+	}
+}
